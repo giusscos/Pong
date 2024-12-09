@@ -13,8 +13,13 @@ class GameScene: SKScene {
     var impulseUnit = 50
     
     var ball = SKSpriteNode()
+    
     var cpu = SKSpriteNode()
+    var cpuLabel = SKLabelNode()
+    
     var player = SKSpriteNode()
+    var playerLabel = SKLabelNode()
+
     
     var score = [Int]()
     
@@ -22,8 +27,12 @@ class GameScene: SKScene {
         startGame()
         
         ball = self.childNode(withName: "ball") as! SKSpriteNode
+        
         cpu = self.childNode(withName: "cpu") as! SKSpriteNode
+        cpuLabel = self.childNode(withName: "cpu_score") as! SKLabelNode
+        
         player = self.childNode(withName: "player") as! SKSpriteNode
+        playerLabel = self.childNode(withName: "player_score") as! SKLabelNode
         
         ball.physicsBody?.applyImpulse(CGVector(dx: impulseUnit, dy: impulseUnit))
         
@@ -37,6 +46,10 @@ class GameScene: SKScene {
     
     func startGame(){
         score = [0,0]
+
+        playerLabel.text = "\(score[0])"
+
+        cpuLabel.text = "\(score[1])"
     }
     
     func addScore(playerWon: SKSpriteNode) {
@@ -51,7 +64,9 @@ class GameScene: SKScene {
             ball.physicsBody?.applyImpulse(CGVector(dx: (impulseUnit * -1), dy: (impulseUnit * -1)))
         }
         
-        print(score)
+        playerLabel.text = "\(score[0])"
+        
+        cpuLabel.text = "\(score[1])"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
