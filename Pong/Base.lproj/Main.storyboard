@@ -31,42 +31,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="IiJ-n7-bAF">
-                                <rect key="frame" x="139" y="408" width="113" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="IiJ-n7-bAF">
+                                <rect key="frame" x="88.99871247533963" y="398.07734558670438" width="213.00000000003263" height="56.00000000000864"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Multi Player"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Multi Player">
+                                            <attributes>
+                                                <font key="NSFont" size="36" name="SFProDisplay-Bold"/>
+                                                <font key="NSOriginalFont" size="12" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="MultiPlayerButton:" destination="d5S-s2-uMm" eventType="touchUpInside" id="Jd6-CK-NC0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="heu-MB-g8M">
-                                <rect key="frame" x="151" y="489" width="89" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="SinglePlayerButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibn-F6-4X3">
+                                <rect key="frame" x="71.376793954953769" y="290.99999999997942" width="250.00000000003854" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Settings"/>
-                                <connections>
-                                    <action selector="SettingsButton:" destination="d5S-s2-uMm" eventType="touchUpInside" id="VSv-0J-3yt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="SinglePlayerButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibn-F6-4X3">
-                                <rect key="frame" x="127" y="322" width="138" height="51"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Single Player" buttonSize="large"/>
+                                <buttonConfiguration key="configuration" style="plain" buttonSize="large">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Single Player">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="36" name="SFProDisplay-Bold"/>
+                                                <font key="NSOriginalFont" size="36" name="SFProDisplay-Bold"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="SinglePlayerButton:" destination="d5S-s2-uMm" eventType="touchUpInside" id="BYs-nD-d82"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MaT-5Q-6T7">
+                                <rect key="frame" x="117.46488854672384" y="490.00000000001648" width="157" height="56.00000000000432"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Settings">
+                                            <attributes>
+                                                <font key="NSFont" size="36" name="SFProDisplay-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="MultiPlayerButton:" destination="d5S-s2-uMm" eventType="touchUpInside" id="uqI-Ms-6CL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bdJ-0s-uIM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="heu-MB-g8M" firstAttribute="centerX" secondItem="IiJ-n7-bAF" secondAttribute="centerX" id="5eb-tb-V2C"/>
-                            <constraint firstItem="heu-MB-g8M" firstAttribute="leading" secondItem="bdJ-0s-uIM" secondAttribute="leading" constant="151" id="LD7-Vu-gYX"/>
-                            <constraint firstItem="bdJ-0s-uIM" firstAttribute="bottom" secondItem="heu-MB-g8M" secondAttribute="bottom" constant="294" id="oPs-hh-XiN"/>
-                            <constraint firstItem="heu-MB-g8M" firstAttribute="top" secondItem="IiJ-n7-bAF" secondAttribute="bottom" constant="45.999999999994088" id="wHI-0y-Vwb"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="9dl-EJ-0f3"/>
                 </viewController>
