@@ -9,8 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    
-    var impulseUnit = 50
+    var impulseUnit = 30
     
     var ball = SKSpriteNode()
     
@@ -19,22 +18,19 @@ class GameScene: SKScene {
     
     var player = SKSpriteNode()
     var playerLabel = SKLabelNode()
-
     
     var score = [Int]()
     
     override func didMove(to view: SKView) {
-        startGame()
-        
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         
         cpu = self.childNode(withName: "cpu") as! SKSpriteNode
+        cpu.position.y = (self.frame.height / 2) - 100
         cpuLabel = self.childNode(withName: "cpu_score") as! SKLabelNode
         
         player = self.childNode(withName: "player") as! SKSpriteNode
+        player.position.y = (-self.frame.height / 2) + 100
         playerLabel = self.childNode(withName: "player_score") as! SKLabelNode
-        
-        ball.physicsBody?.applyImpulse(CGVector(dx: impulseUnit, dy: impulseUnit))
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
@@ -42,6 +38,8 @@ class GameScene: SKScene {
         border.restitution = 1
         
         self.physicsBody = border
+        
+        startGame()
     }
     
     func startGame(){
@@ -50,6 +48,8 @@ class GameScene: SKScene {
         playerLabel.text = "\(score[0])"
 
         cpuLabel.text = "\(score[1])"
+        
+        ball.physicsBody?.applyImpulse(CGVector(dx: impulseUnit, dy: impulseUnit))
     }
     
     func addScore(playerWon: SKSpriteNode) {
@@ -73,7 +73,15 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             
-            player.run(SKAction.moveTo(x: location.x, duration: 0.1))
+            if currentViewType == .multiPLayerView {
+                if location.y > 0 {
+                    cpu.run(SKAction.moveTo(x: location.x, duration: 0.1))
+                } else {
+                    player.run(SKAction.moveTo(x: location.x, duration: 0.1))
+                }
+            } else {
+                player.run(SKAction.moveTo(x: location.x, duration: 0.1))
+            }
         }
     }
     
@@ -81,14 +89,33 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.location(in: self)
             
-            player.run(SKAction.moveTo(x: location.x, duration: 0.1))
+            if currentViewType == .multiPLayerView {
+                if location.y > 0 {
+                    cpu.run(SKAction.moveTo(x: location.x, duration: 0.1))
+                } else {
+                    player.run(SKAction.moveTo(x: location.x, duration: 0.1))
+                }
+            } else {
+                player.run(SKAction.moveTo(x: location.x, duration: 0.1))
+            }
         }
     }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        cpu.run(SKAction.moveTo(x: ball.position.x, duration: 0.5))
+        switch currentViewType {
+            case .singlePlayerView:
+                cpu.run(SKAction.moveTo(x: ball.position.x, duration: 0.5))
+                break
+            
+            case .multiPLayerView:
+                
+                break
+            
+            case .settingsView:
+                break
+        }
         
         if ball.position.y <= (player.position.y - player.size.height) {
             addScore(playerWon: cpu)
